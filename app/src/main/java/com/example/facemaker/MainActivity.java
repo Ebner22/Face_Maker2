@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Create an Adapter for the hair_spinner that allows user to select hair type
         ArrayList<String> hairList=new ArrayList<String>();
         hairList.add("long");
         hairList.add("short");

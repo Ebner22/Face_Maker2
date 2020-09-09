@@ -1,19 +1,36 @@
 import android.graphics.Color;
 
 public class Face {
-    private long skinColor;
-    private long eyeColor;
-    private long hairColor;
+    /**
+     * represents a Face
+     * @variable skinColor is an integer representing an rgba value created using Color.argb()
+     * @variable eyeColor is an integer representing an rgba value created using Color.argb()
+     * @variable hairColor is an integer representing an rgba value created using Color.argb()
+     * @variable hairStyle is an integer with a value of 0, 1, or 2, representing the hair styles in the hair spinner
+     * @author is Sarah Ebner
+     *
+     */
+    private int skinColor;
+    private int eyeColor;
+    private int hairColor;
     private int hairStyle;
 
     public Face(){
+        /**
+         * creates a face with a random skin, eye, hair color, and hair style
+         * @author is Sarah Ebner
+         */
         skinColor=randomize();
         eyeColor=randomize();
         hairColor=randomize();
-        hairStyle=1;
+        hairStyle=(int)Math.random()*3;
     }
 
-    public long randomize(){
+    public int randomize(){
+        /**
+         * creates a random color (represented as an integer)
+         * @author is Sarah Ebner
+         */
         int a=(int)Math.random()*255;
         int r=(int)Math.random()*255;
         int g=(int)Math.random()*255;

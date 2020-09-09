@@ -12,6 +12,15 @@
         android:layout_weight="3"
         android:orientation="vertical">
 
+        <!--External Citation
+        Date: 7 September 2020
+        Problem: problem of unknown source where using design interface to
+        change margins resulted in complete re-ordering of widgets.
+        Resource: talked to Professor Nuxoll
+        Solution: added margin directly in the code.
+        -->
+
+
         <TextView
             android:id="@+id/color_textview"
             android:layout_width="match_parent"
