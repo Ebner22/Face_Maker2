@@ -1,8 +1,10 @@
+package com.example.facemaker;
+
 import android.graphics.Color;
 
 public class Face {
     /**
-     * represents a Face
+     * represents a com.example.facemaker.Face
      * @variable skinColor is an integer representing an rgba value created using Color.argb()
      * @variable eyeColor is an integer representing an rgba value created using Color.argb()
      * @variable hairColor is an integer representing an rgba value created using Color.argb()
@@ -10,10 +12,10 @@ public class Face {
      * @author is Sarah Ebner
      *
      */
-    private int skinColor;
-    private int eyeColor;
-    private int hairColor;
-    private int hairStyle;
+    public int skinColor;
+    public int eyeColor;
+    public int hairColor;
+    public int hairStyle;
 
     public Face(){
         /**
@@ -31,7 +33,7 @@ public class Face {
          * creates a random color (represented as an integer)
          * @author is Sarah Ebner
          */
-        int a=(int)Math.random()*255;
+        int a=255;
         int r=(int)Math.random()*255;
         int g=(int)Math.random()*255;
         int b=(int)Math.random()*255;

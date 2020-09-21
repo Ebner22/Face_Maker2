@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> hairAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,hairList);
         Spinner hairSpinner=findViewById(R.id.hair_spinner);
         hairSpinner.setAdapter(hairAdapter);
+
+        //FaceView myFaceView=(FaceView) findViewById(R.id.surfaceView);
         /**
          * External citation:
          *  Date: 8 September 2020
