@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
         Spinner hairSpinner=findViewById(R.id.hair_spinner);
         hairSpinner.setAdapter(hairAdapter);
 
-        //FaceView myFaceView=(FaceView) findViewById(R.id.surfaceView);
+        FaceView myFaceView=(FaceView) findViewById(R.id.surfaceView);
+        myFaceView.invalidate();
         /**
          * External citation:
          *  Date: 8 September 2020
