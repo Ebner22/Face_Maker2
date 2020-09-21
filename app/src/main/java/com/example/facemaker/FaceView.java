@@ -17,10 +17,10 @@ public class FaceView extends SurfaceView {
     Paint eyePaint=new Paint();
     Paint hairPaint=new Paint();
 
-    private float cen_x=500.0f;
-    private float cen_y=300.0f;
-    private float height=400.0f;
-    private float width=200.0f;
+    private float cen_x=550.0f;
+    private float cen_y=500.0f;
+    private float height=800.0f;
+    private float width=600.0f;
     public FaceView(Context context) {
         super(context);
         setWillNotDraw(false);
@@ -51,10 +51,14 @@ public class FaceView extends SurfaceView {
         hairPaint.setColor(face.hairColor);
         hairPaint.setStyle(Paint.Style.FILL);
     }
+    public Face getFace(){
+        return face;
+    }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void OnDraw(Canvas canvas){
+    @Override
+    public void onDraw(Canvas canvas){
         facePaint.setColor(Color.BLUE);
         canvas.drawOval(cen_x-width/2,cen_y-height/2,cen_x+width/2,cen_y+height/2,facePaint);
-        canvas.drawRect(100.0f,100.0f,300.0f,300.0f,facePaint);
+
     }
 }

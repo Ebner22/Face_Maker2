@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -25,7 +27,16 @@ public class MainActivity extends AppCompatActivity {
         hairSpinner.setAdapter(hairAdapter);
 
         FaceView myFaceView=(FaceView) findViewById(R.id.surfaceView);
-        myFaceView.invalidate();
+
+        SeekBar red_slide=findViewById(R.id.seekBar_red);
+        SeekBar green_slide=findViewById(R.id.seekBar_green);
+        SeekBar blue_slide=findViewById(R.id.seekBar_blue);
+        RadioButton hair_but=findViewById(R.id.radioButton_hair);
+        RadioButton eyes_but=findViewById(R.id.radioButton_eyes);
+        RadioButton skin_but=findViewById(R.id.radioButton_skin);
+        RadioButton rand_face_but=findViewById(R.id.radioButton_random_face);
+
+        FaceController fCont=new FaceController(myFaceView, red_slide, green_slide, blue_slide, hair_but, eyes_but, skin_but,rand_face_but);
         /**
          * External citation:
          *  Date: 8 September 2020
