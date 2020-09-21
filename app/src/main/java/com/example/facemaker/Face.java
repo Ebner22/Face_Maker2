@@ -25,7 +25,7 @@ public class Face {
         skinColor=randomize();
         eyeColor=randomize();
         hairColor=randomize();
-        hairStyle=(int)Math.random()*3;
+        hairStyle=(int)(Math.random()*3);
     }
 
     public int randomize(){
@@ -34,9 +34,9 @@ public class Face {
          * @author is Sarah Ebner
          */
         int a=255;
-        int r=(int)Math.random()*255;
-        int g=(int)Math.random()*255;
-        int b=(int)Math.random()*255;
+        int r=(int)(Math.random()*255);
+        int g=(int)(Math.random()*255);
+        int b=(int)(Math.random()*255);
         return Color.argb(a,r,g,b);
 
     }
