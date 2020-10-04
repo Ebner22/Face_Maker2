@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 
@@ -23,6 +24,16 @@ public class MainActivity extends AppCompatActivity {
         hairList.add("short");
         hairList.add("bald");
         ArrayAdapter<String> hairAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,hairList);
+        /**
+         * External citation:
+         *  Date: 8 September 2020
+         *  Problem: needed to determine valid inputs for an ArrayAdapter constructor
+         *  Resources:
+         *      https://developer.android.com/reference/android/widget/ArrayAdapter#ArrayAdapter(android.content.Context,%20int,%20T[])
+         *      https://developer.android.com/reference/java/util/List
+         *      https://developer.android.com/reference/java/util/ArrayList
+         *   Solution: An arraylist can be used
+         */
         Spinner hairSpinner=findViewById(R.id.hair_spinner);
         hairSpinner.setAdapter(hairAdapter);
 
@@ -36,16 +47,17 @@ public class MainActivity extends AppCompatActivity {
         RadioButton skin_but=findViewById(R.id.radioButton_skin);
         RadioButton rand_face_but=findViewById(R.id.radioButton_random_face);
 
+
         FaceController fCont=new FaceController(myFaceView, red_slide, green_slide, blue_slide, hair_but, eyes_but, skin_but,rand_face_but);
-        /**
-         * External citation:
-         *  Date: 8 September 2020
-         *  Problem: needed to determine valid inputs for an ArrayAdapter constructor
-         *  Resources:
-         *      https://developer.android.com/reference/android/widget/ArrayAdapter#ArrayAdapter(android.content.Context,%20int,%20T[])
-         *      https://developer.android.com/reference/java/util/List
-         *      https://developer.android.com/reference/java/util/ArrayList
-         *   Solution: An arraylist can be used
-         */
+
+        red_slide.setOnSeekBarChangeListener(fCont);
+        green_slide.setOnSeekBarChangeListener(fCont);
+        blue_slide.setOnSeekBarChangeListener(fCont);
+        hair_but.setOnClickListener(fCont);
+        eyes_but.setOnClickListener(fCont);
+        skin_but.setOnClickListener(fCont);
+        rand_face_but.setOnClickListener(fCont);
+        hairSpinner.setOnItemSelectedListener(fCont);
+
     }
 }

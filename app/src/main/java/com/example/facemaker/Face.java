@@ -17,18 +17,28 @@ public class Face {
     public int hairColor;
     public int hairStyle;
 
+
     public Face(){
         /**
          * creates a face with a random skin, eye, hair color, and hair style
          * @author is Sarah Ebner
          */
-        skinColor=randomize();
-        eyeColor=randomize();
-        hairColor=randomize();
+        skinColor=randCol();
+        eyeColor=randCol();
+        hairColor=randCol();
+        hairStyle=(int)(Math.random()*3);
+
+
+    }
+
+    public void randomize(){
+        skinColor=randCol();
+        eyeColor=randCol();
+        hairColor=randCol();
         hairStyle=(int)(Math.random()*3);
     }
 
-    public int randomize(){
+    public int randCol(){
         /**
          * creates a random color (represented as an integer)
          * @author is Sarah Ebner
