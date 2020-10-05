@@ -143,9 +143,11 @@ public class FaceView extends SurfaceView {
         float bottom=cen_y-height*1/5+eye_height/2;
         float cx=cen_x-width*1/5;
         float cy=cen_y-height*1/5;
-        canvas.drawOval(left, top, right, bottom ,whitePaint);
-        canvas.drawCircle(cx,cy,pupil_width/2+10.0f,eyePaint);
-        canvas.drawCircle(cx,cy,pupil_width/2,blackPaint);
+        canvas.drawOval(left, top, right, bottom ,whitePaint);//the scelera
+        canvas.drawCircle(cx,cy,pupil_width/2+10.0f,eyePaint);//the iris
+        canvas.drawCircle(cx,cy,pupil_width/2,blackPaint);//the pupil
+
+        //change the location to the other eye and repeat
         left=cen_x+width*1/5-eye_width/2;
         top=cen_y-height*1/5-eye_height/2;
         right= cen_x+width*1/5+eye_width/2;
@@ -161,23 +163,24 @@ public class FaceView extends SurfaceView {
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void drawHair(Canvas canvas){
-        if (face.hairStyle==1) {
+        if (face.hairStyle==1) {//short hair
             float left = cen_x - width / 2;
             float top = cen_y - height / 2 - 20.0f;
             float right = cen_x + width / 2;
             float bottom = cen_y;
             canvas.drawOval(left, top, right, bottom, hairPaint);
         }
-        else if (face.hairStyle==0){
+        else if (face.hairStyle==0){//long hair
             float left = cen_x - width / 2 -25.0f;
             float top = cen_y - height / 2 - 30.0f;
             float right = cen_x + width / 2 + 25.0f;
             float bottom = cen_y + height*4/5;
             canvas.drawOval(left, top, right, bottom, hairPaint);
         }
+        //for bald, no hair needs to be drawn
     }
     /**
-     * This helper method draws the nose on the canvas
+     * This helper method draws two black lines for the nose on the canvas
      * @param canvas is a reference to the canvas object that is displayed on the screen.
      */
     public void drawNose(Canvas canvas){

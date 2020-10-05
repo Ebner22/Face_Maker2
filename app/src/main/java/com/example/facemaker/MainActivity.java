@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
          *      https://developer.android.com/reference/java/util/ArrayList
          *   Solution: An arraylist can be used
          */
+        //get references to the objects in the XML file
         Spinner hairSpinner=findViewById(R.id.hair_spinner);
         hairSpinner.setAdapter(hairAdapter);
 
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         FaceController fCont=new FaceController(myFaceView, red_slide, green_slide, blue_slide, hair_but, eyes_but, skin_but,rand_face_but);
 
+        //set fCont as the listener for the widgets that need a listener
         red_slide.setOnSeekBarChangeListener(fCont);
         green_slide.setOnSeekBarChangeListener(fCont);
         blue_slide.setOnSeekBarChangeListener(fCont);
