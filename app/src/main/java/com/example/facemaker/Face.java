@@ -31,6 +31,9 @@ public class Face {
 
     }
 
+    /**
+     * This method gives random colors to the skin, eyes, and hair and randomizes the hair style
+     */
     public void randomize(){
         skinColor=randCol();
         eyeColor=randCol();

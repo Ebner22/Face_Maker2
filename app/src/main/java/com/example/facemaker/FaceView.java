@@ -10,6 +10,22 @@ import android.view.SurfaceView;
 
 import androidx.annotation.RequiresApi;
 
+/**
+ * FaceView draws the face object
+ * It is created in the XML code
+ * @variable face is a reference to the face object that it is drawing
+ * @variable facePaint is a Paint object with the color of the skin
+ * @variable eyePaint is a Paint object with the color of the eyes
+ * @variable hairPaint is a Paint object with the color of the hair
+ * @variable whitePaint and blackPaint are Paint objects used to draw white and black (respectively) parts of the face
+ * @variable cen_x represents the x-coordinate of the center of the face
+ * @variable cen_y represents the y-coordinate of the center of the face
+ * @variable height represents the height of the oval of the face
+ * @variable width represents the width of the oval of the face
+ * @variable eye_width represents the width of the white part of the eyes
+ * @variable eye_height represents the height of the white part of the eyes
+ * @variable pupil_width represents the diameter of the pupil
+ */
 public class FaceView extends SurfaceView {
     private Face face=new Face();
 
@@ -29,6 +45,11 @@ public class FaceView extends SurfaceView {
     private float pupil_width=30.0f;
 
 
+    /**
+     * This constructor calls the constructor for a surfaceView, tells the object to draw itself, and sets up the paint objects
+     * @param context is not used
+     *
+     */
     public FaceView(Context context) {
         super(context);
         setWillNotDraw(false);
@@ -52,6 +73,12 @@ public class FaceView extends SurfaceView {
     Reference: https://developer.android.com/reference/android/view/SurfaceView
     Solution: I overrode three of the four possible constructors for a surfaceView. I have not had issues with the fourth one, so it must not be called (often).
      */
+
+    /**
+     * This constructor calls the constructor for a surfaceView, tells the object to draw itself, and sets up the paint objects
+     * @param context is not used
+     * @param attrs is not used
+     */
     public FaceView(Context context, AttributeSet attrs){
         super(context, attrs);
         setWillNotDraw(false);
@@ -67,6 +94,13 @@ public class FaceView extends SurfaceView {
         blackPaint.setStyle(Paint.Style.FILL);
         blackPaint.setStrokeWidth(2.0f);
     }
+
+    /**
+     * This constructor calls the constructor for a surfaceView, tells the object to draw itself, and sets up the paint objects
+     * @param context is not used
+     * @param attrs is not used
+     * @param defStyleAttr is not used
+     */
     public FaceView(Context context, AttributeSet attrs,int defStyleAttr){
         super(context, attrs, defStyleAttr);
         setWillNotDraw(false);
@@ -82,6 +116,11 @@ public class FaceView extends SurfaceView {
         blackPaint.setStyle(Paint.Style.FILL);
         blackPaint.setStrokeWidth(2.0f);
     }
+
+    /**
+     * This method updates the facepaint objects to have the correct colors so that they continue to match the colors in the face object
+     * after the face's colors have been changed.
+     */
     public void updateFaceColors(){
         facePaint.setColor(face.skinColor);
         eyePaint.setColor(face.eyeColor);
@@ -92,6 +131,10 @@ public class FaceView extends SurfaceView {
         return face;
     }
 
+    /**
+     * This helper method draws the eyes on the canvas
+     * @param canvas is a reference to the canvas object that is displayed on the screen.
+     */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void drawEyes(Canvas canvas){
         float left=cen_x-width*1/5-eye_width/2;
@@ -112,6 +155,10 @@ public class FaceView extends SurfaceView {
         canvas.drawCircle(cx,cy,pupil_width/2+10.0f,eyePaint);
         canvas.drawCircle(cx,cy,pupil_width/2,blackPaint);
     }
+    /**
+     * This helper method draws the hair on the canvas in the appropriate hair style
+     * @param canvas is a reference to the canvas object that is displayed on the screen.
+     */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void drawHair(Canvas canvas){
         if (face.hairStyle==1) {
@@ -129,6 +176,10 @@ public class FaceView extends SurfaceView {
             canvas.drawOval(left, top, right, bottom, hairPaint);
         }
     }
+    /**
+     * This helper method draws the nose on the canvas
+     * @param canvas is a reference to the canvas object that is displayed on the screen.
+     */
     public void drawNose(Canvas canvas){
         float top=cen_y-height/8;
         float bottom=cen_y+height/8;
@@ -138,6 +189,10 @@ public class FaceView extends SurfaceView {
         canvas.drawLine(cen_x,bottom, right, bottom, blackPaint);
         return;
     }
+    /**
+     * This helper method draws the mouth on the canvas
+     * @param canvas is a reference to the canvas object that is displayed on the screen.
+     */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void drawMouth(Canvas canvas){
         float left=cen_x-width/5;
@@ -155,12 +210,16 @@ public class FaceView extends SurfaceView {
         Solution: I used the arc function.
 
       */
+    /**
+     * This method draws is called whenever the view is invalidated and redraws the face
+     * @param canvas is a reference to the canvas object that is displayed on the screen.
+     */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onDraw(Canvas canvas){
         //facePaint.setColor(Color.BLUE);
         drawHair(canvas);
-        canvas.drawOval(cen_x-width/2,cen_y-height/2,cen_x+width/2,cen_y+height/2,facePaint);
+        canvas.drawOval(cen_x-width/2,cen_y-height/2,cen_x+width/2,cen_y+height/2,facePaint);//this is the skin of the face
         drawEyes(canvas);
         drawNose(canvas);
         drawMouth(canvas);
